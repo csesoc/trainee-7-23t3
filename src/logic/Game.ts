@@ -1,9 +1,7 @@
 import { Coordinate, PIECE_COLOR, PIECE_TYPE, Piece } from "@datatypes/Piece";
 import { isEqual } from "lodash";
 
-const pieces: Piece[] = []
-
-const generatePieceID = (pieceType: PIECE_TYPE, pieceColor: PIECE_COLOR): string => {
+const generatePieceID = (pieces: Piece[], pieceType: PIECE_TYPE, pieceColor: PIECE_COLOR): string => {
   let ID = "";
   ID += pieceColor;
   ID += pieceType;
@@ -12,17 +10,13 @@ const generatePieceID = (pieceType: PIECE_TYPE, pieceColor: PIECE_COLOR): string
   return ID;
 }
 
-export const getPieces = (): Piece[] => {
-  return pieces;
-}
-
-export const addPiece = (coordinate: Coordinate, pieceType: PIECE_TYPE, pieceColor: PIECE_COLOR): boolean => {
+export const addPiece = (pieces: Piece[], coordinate: Coordinate, pieceType: PIECE_TYPE, pieceColor: PIECE_COLOR): boolean => {
   if (pieces.some((piece) => (isEqual(piece.coordinate, coordinate)))) {
     return false;
   }
 
   pieces.push({
-    pieceID: generatePieceID(pieceType, pieceColor),
+    pieceID: generatePieceID(pieces, pieceType, pieceColor),
     coordinate,
     pieceType,
     pieceColor
@@ -31,7 +25,7 @@ export const addPiece = (coordinate: Coordinate, pieceType: PIECE_TYPE, pieceCol
   return true;
 }
 
-export const movePiece = (pieceID: string, coordinate: Coordinate): boolean => {
+export const movePiece = (pieces: Piece[], pieceID: string, coordinate: Coordinate): boolean => {
   if (pieces.some((piece) => (isEqual(piece.coordinate, coordinate)))) {
     return false;
   }
