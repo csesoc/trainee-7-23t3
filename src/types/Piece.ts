@@ -3,12 +3,12 @@ export enum PIECE_TYPE {
   BEETLE = "B",
   ANT = "A",
   GRASSHOPPER = "G",
-  SPIDER = "S"
+  SPIDER = "S",
 }
 
 export enum PIECE_COLOR {
   WHITE = "w",
-  BLACK = "b"
+  BLACK = "b",
 }
 
 export interface Coordinate {
@@ -23,4 +23,3 @@ export interface Piece {
   pieceColor: PIECE_COLOR;
   coordinate: Coordinate;
 }
-

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDrag } from 'react-dnd';
+import React from "react";
+import { useDrag } from "react-dnd";
 
 interface Props {
   row: number;
@@ -8,7 +8,7 @@ interface Props {
 
 const Piece = ({ row, col }: Props) => {
   const [, drag] = useDrag({
-    type: 'HEXAGON',
+    type: "HEXAGON",
     item: { row, col },
   });
 
