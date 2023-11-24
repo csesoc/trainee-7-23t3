@@ -4,6 +4,8 @@ import { HexUtils } from "@utils/HexUtils"
 import { useLayoutContext } from "./Layout"
 import { Point } from "@models/Point"
 
+import './Hexagon.css'
+
 type H = { data?: any; state: { hex: Hex }; props: HexagonProps }
 
 export type HexagonDragEventHandler<T = Element, AdditionalData = any> = (
