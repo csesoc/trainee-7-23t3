@@ -198,4 +198,13 @@ export class HexUtils {
   }
 }
 
+export const offsetToCube = (
+  row: number,
+  col: number,
+): [number, number, number] => {
+  const q = col;
+  var r = row - (col - (col % 2)) / 2;
+  return [q, r, -q - r];
+};
+
 export default HexUtils;

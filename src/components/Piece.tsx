@@ -1,5 +1,7 @@
 import React from "react";
 import { useDrag } from "react-dnd";
+import Hexagon from "./Hexagon";
+import { offsetToCube } from "@utils/HexUtils";
 
 interface Props {
   row: number;
@@ -12,7 +14,9 @@ const Piece = ({ row, col }: Props) => {
     item: { row, col },
   });
 
-  return <div className="piece" ref={drag}></div>;
+  const [q, r, s] = offsetToCube(row, col);
+
+  return <Hexagon q={q} r={r} s={s} />;
 };
 
 export default Piece;
