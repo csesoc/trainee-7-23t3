@@ -2,12 +2,12 @@ import React from "react";
 import { Orientation } from "@models/Orientation";
 import { Point } from "@datatypes/Piece";
 
-export type LayoutDimension = {
+export interface LayoutDimension {
   size: Point;
   orientation: Orientation;
   origin: Point;
   spacing: number;
-};
+}
 
 interface LayoutContextProps {
   layout: LayoutDimension;
