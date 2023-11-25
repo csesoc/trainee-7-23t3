@@ -1,19 +1,18 @@
-import * as React from "react";
+import React from "react";
 import { Orientation } from "@models/Orientation";
-import { Point } from "@models/Point";
-
-export type Size = { x: number; y: number };
+import { Point } from "@datatypes/Piece";
 
 export type LayoutDimension = {
-  size: Size;
+  size: Point;
   orientation: Orientation;
-  origin: Size;
+  origin: Point;
   spacing: number;
 };
-export type LayoutContextProps = {
+
+interface LayoutContextProps {
   layout: LayoutDimension;
   points: string;
-};
+}
 
 const LAYOUT_FLAT = new Orientation(
   3.0 / 2.0,
@@ -27,8 +26,8 @@ const LAYOUT_FLAT = new Orientation(
   0.0,
 );
 
-const defaultSize = new Point(10, 10);
-const defaultOrigin = new Point(0, 0);
+const defaultSize = { x: 10, y: 10 };
+const defaultOrigin = { x: 0, y: 0 };
 const defaultSpacing = 1.0;
 
 const Context = React.createContext<LayoutContextProps>({
@@ -57,14 +56,14 @@ export function useLayoutContext() {
 function calculateCoordinates(
   circumradius: number,
   angle: number = 0,
-  center: Point = new Point(0, 0),
+  center: Point = { x: 0, y: 0 },
 ) {
   const corners: Point[] = [];
 
   for (let i = 0; i < 6; i++) {
     const x = circumradius * Math.cos((2 * Math.PI * i) / 6 + angle);
     const y = circumradius * Math.sin((2 * Math.PI * i) / 6 + angle);
-    const point = new Point(center.x + x, center.y + y);
+    const point = { x: center.x + x, y: center.y + y };
     corners.push(point);
   }
 
@@ -72,16 +71,10 @@ function calculateCoordinates(
 }
 
 interface Props {
-  children:
-    | React.ReactElement
-    | React.ReactElement[]
-    | JSX.Element
-    | JSX.Element[];
-  className?: string;
+  children: React.ReactElement | React.ReactElement[];
   origin?: any;
   /* defines scale */
-  size?: Size;
-  space?: number;
+  size?: Point;
   spacing?: number;
 }
 
@@ -93,7 +86,6 @@ export function Layout({
   spacing = defaultSpacing,
   origin = defaultOrigin,
   children,
-  className,
 }: Props) {
   const orientation = LAYOUT_FLAT;
   const angle = 0;
@@ -113,7 +105,7 @@ export function Layout({
         points,
       }}
     >
-      <g className={className}>{children}</g>
+      <g>{children}</g>
     </Context.Provider>
   );
 }

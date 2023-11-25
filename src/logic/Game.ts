@@ -1,4 +1,4 @@
-import { Coordinate, PIECE_COLOR, PIECE_TYPE, Piece } from "@datatypes/Piece";
+import { Point, PIECE_COLOR, PIECE_TYPE, Piece } from "@datatypes/Piece";
 import { isEqual } from "lodash";
 
 const generatePieceID = (
@@ -18,17 +18,17 @@ const generatePieceID = (
 
 export const addPiece = (
   pieces: Piece[],
-  coordinate: Coordinate,
+  point: Point,
   pieceType: PIECE_TYPE,
   pieceColor: PIECE_COLOR,
 ): boolean => {
-  if (pieces.some((piece) => isEqual(piece.coordinate, coordinate))) {
+  if (pieces.some((piece) => isEqual(piece.point, point))) {
     return false;
   }
 
   pieces.push({
     pieceID: generatePieceID(pieces, pieceType, pieceColor),
-    coordinate,
+    point,
     pieceType,
     pieceColor,
   });
@@ -39,18 +39,18 @@ export const addPiece = (
 export const movePiece = (
   pieces: Piece[],
   pieceID: string,
-  coordinate: Coordinate,
+  point: Point,
 ): boolean => {
-  if (pieces.some((piece) => isEqual(piece.coordinate, coordinate))) {
+  if (pieces.some((piece) => isEqual(piece.point, point))) {
     return false;
   }
 
   const piece = pieces.find((piece) => piece.pieceID === pieceID);
 
-  if (!piece || isEqual(piece.coordinate, coordinate)) {
+  if (!piece || isEqual(piece.point, point)) {
     return false;
   }
 
-  piece.coordinate = coordinate;
+  piece.point = point;
   return true;
 };

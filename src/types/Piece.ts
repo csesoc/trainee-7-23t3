@@ -11,7 +11,7 @@ export enum PIECE_COLOR {
   BLACK = "b",
 }
 
-export interface Coordinate {
+export interface Point {
   x: number;
   y: number;
 }
@@ -21,5 +21,5 @@ export interface Piece {
   pieceID: string;
   pieceType: PIECE_TYPE;
   pieceColor: PIECE_COLOR;
-  coordinate: Coordinate;
+  point: Point;
 }
