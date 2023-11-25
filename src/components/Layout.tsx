@@ -45,14 +45,6 @@ export function useLayoutContext() {
   return ctx;
 }
 
-/**
- * Calculates the points for a hexagon given the size, angle, and center
- * @param circumradius Radius of the Hexagon
- * @param angle Angle offset for the hexagon in radians
- * @param center Central point for the heaxagon
- * @returns Array of 6 points
- */
-
 function calculateCoordinates(
   circumradius: number,
   angle: number = 0,
@@ -78,18 +70,14 @@ interface Props {
   spacing?: number;
 }
 
-/**
- * Provides LayoutContext for all descendands and renders child elements inside a <g> (Group) element
- */
-export function Layout({
+function Layout({
   size = defaultSize,
   spacing = defaultSpacing,
   origin = defaultOrigin,
   children,
 }: Props) {
   const orientation = LAYOUT_FLAT;
-  const angle = 0;
-  const cornerCoords = calculateCoordinates(size.x, angle);
+  const cornerCoords = calculateCoordinates(size.x);
   const points = cornerCoords.map((point) => `${point.x},${point.y}`).join(" ");
   const childLayout = {
     orientation,
