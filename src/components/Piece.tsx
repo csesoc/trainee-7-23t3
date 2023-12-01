@@ -7,6 +7,7 @@ import { offsetToCube } from "@utils/HexUtils";
 interface Props {
   row: number;
   col: number;
+  handleUpdate: (piecesCoordinate: [number, number][]) => void;
 }
 
 const Piece = ({ row, col }: Props) => {

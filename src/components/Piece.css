@@ -1,3 +1,8 @@
 .piece {
   fill: beige;
 }
+
+.piece:hover {
+  fill: white;
+  cursor: grab;
+}
