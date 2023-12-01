@@ -10,7 +10,7 @@ for (let row = 0; row < 6; row++) {
     gridHexCoordinates.push([row, col]);
   }
 }
-const samplePieceCoordinates = [
+const samplePieceCoordinates: [number, number][] = [
   [1, 0],
   [5, 8],
   [3, 4],
@@ -43,6 +43,7 @@ const GridBoard = () => {
           <Piece
             row={coordinate[0]}
             col={coordinate[1]}
+            pieceCoordinates={pieceCoordinates}
             handleUpdate={setPieceCoordinates}
           />
         ))}
