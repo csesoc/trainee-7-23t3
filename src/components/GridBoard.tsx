@@ -1,6 +1,7 @@
 import React from "react";
-import Piece from "./Piece";
+import GridHex from "./GridHex";
 import Layout from "./Layout";
+import Piece from "@components/Piece";
 
 const piecesCoordinate: [number, number][] = [];
 
@@ -21,6 +22,11 @@ const GridBoard = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <Layout size={{ x: 10, y: 10 }} spacing={1.1} origin={{ x: 0, y: 0 }}>
+        {piecesCoordinate.map((coordinate) => (
+          <GridHex row={coordinate[0]} col={coordinate[1]} />
+        ))}
+      </Layout>
+      <Layout size={{ x: 8, y: 8 }} spacing={1.375} origin={{ x: 0, y: 0 }}>
         {piecesCoordinate.map((coordinate) => (
           <Piece row={coordinate[0]} col={coordinate[1]} />
         ))}

@@ -9,9 +9,10 @@ interface Props {
   q: number;
   r: number;
   s: number;
+  className?: string;
 }
 
-function Hexagon({ q, r, s }: Props) {
+function Hexagon({ q, r, s, className }: Props) {
   // destructure props into their values
   const { layout, points } = useLayoutContext();
 
@@ -25,7 +26,7 @@ function Hexagon({ q, r, s }: Props) {
   }, [q, r, s, layout]);
 
   return (
-    <g className="hexagon" transform={`translate(${pixel.x}, ${pixel.y})`}>
+    <g className={className} transform={`translate(${pixel.x}, ${pixel.y})`}>
       <polygon points={points} />
     </g>
   );

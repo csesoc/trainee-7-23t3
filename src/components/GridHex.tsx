@@ -1,6 +1,4 @@
 import React from "react";
-
-import "./Piece.css";
 import Hexagon from "./Hexagon";
 import { offsetToCube } from "@utils/HexUtils";
 
@@ -9,10 +7,10 @@ interface Props {
   col: number;
 }
 
-const Piece = ({ row, col }: Props) => {
+const GridHex = ({ row, col }: Props) => {
   const [q, r, s] = offsetToCube(row, col);
 
-  return <Hexagon q={q} r={r} s={s} className="piece" />;
+  return <Hexagon q={q} r={r} s={s} className="hexagon" />;
 };
 
-export default Piece;
+export default GridHex;
