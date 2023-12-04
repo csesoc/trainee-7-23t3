@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import GridHex from "./GridHex";
 import Layout from "./Layout";
 import Piece from "@components/Piece";
+import { Point } from "@datatypes/Piece";
 
 const gridHexCoordinates: [number, number][] = [];
 
@@ -24,6 +25,30 @@ const GridBoard = () => {
     samplePieceCoordinates,
   );
 
+  const [clickedPiece, setClickedPiece] = useState<Point | null>(null);
+
+  const handlePieceClick = ({ x, y }: Point) => {
+    setClickedPiece({ x, y });
+  };
+
+  const handldGridHexClick = ({ x, y }: Point) => {
+    if (clickedPiece === null) return;
+    const newPieceCoordinates = [...pieceCoordinates];
+    newPieceCoordinates.splice(
+      newPieceCoordinates.indexOf([clickedPiece.y, clickedPiece.x]),
+      1,
+    );
+    console.log(newPieceCoordinates);
+    newPieceCoordinates.push([x, y]);
+    console.log(newPieceCoordinates);
+
+    // console.log([x, y]);
+    // console.log(newPieceCoordinates);
+    // console.log(clickedPiece);
+    setPieceCoordinates(newPieceCoordinates);
+    setClickedPiece(null);
+  };
+
   return (
     <svg
       className="grid"
@@ -35,7 +60,16 @@ const GridBoard = () => {
     >
       <Layout size={{ x: 10, y: 10 }} spacing={1.1} origin={{ x: 0, y: 0 }}>
         {gridHexCoordinates.map((coordinate) => (
-          <GridHex row={coordinate[0]} col={coordinate[1]} />
+          <GridHex
+            row={coordinate[0]}
+            col={coordinate[1]}
+            handleClick={handldGridHexClick}
+            hasClickedPiece={
+              clickedPiece !== null &&
+              coordinate[0] === clickedPiece.x &&
+              coordinate[1] === clickedPiece.y
+            }
+          />
         ))}
       </Layout>
       <Layout size={{ x: 8, y: 8 }} spacing={1.375} origin={{ x: 0, y: 0 }}>
@@ -43,8 +77,7 @@ const GridBoard = () => {
           <Piece
             row={coordinate[0]}
             col={coordinate[1]}
-            pieceCoordinates={pieceCoordinates}
-            handleUpdate={setPieceCoordinates}
+            handleClick={handlePieceClick}
           />
         ))}
       </Layout>
