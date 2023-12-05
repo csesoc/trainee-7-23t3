@@ -23,12 +23,13 @@ export class HexUtils {
   static hexToPixel(hex: Hex, layout: LayoutDimension): Point {
     const s = layout.spacing;
     const M = layout.orientation;
-    let x = (M.f0 * hex.q + M.f1 * hex.r) * layout.size.x;
-    let y = (M.f2 * hex.q + M.f3 * hex.r) * layout.size.y;
+    let x = (M.f0 * hex.q + M.f1 * hex.r) * layout.size.row;
+    let y = (M.f2 * hex.q + M.f3 * hex.r) * layout.size.col;
+    // console.log(x, y);
     // Apply spacing
     x = x * s;
     y = y * s;
-    return { x: x + layout.origin.x, y: y + layout.origin.y };
+    return { row: x + layout.origin.row, col: y + layout.origin.col };
   }
 
   static lerp(a: number, b: number, t: number): number {
@@ -52,8 +53,8 @@ export const offsetToCube = (
   row: number,
   col: number,
 ): [number, number, number] => {
-  const q = col;
-  var r = row - (col - (col % 2)) / 2;
+  const q = row;
+  const r = col - (row - (row % 2)) / 2;
   return [q, r, -q - r];
 };
 

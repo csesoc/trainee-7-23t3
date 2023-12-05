@@ -6,7 +6,7 @@ import { Point } from "@datatypes/Piece";
 interface Props {
   row: number;
   col: number;
-  handleClick: ({ x, y }: Point) => void;
+  handleClick: ({ row, col }: Point) => void;
   hasClickedPiece: boolean;
 }
 
@@ -19,7 +19,7 @@ const GridHex = ({ row, col, handleClick, hasClickedPiece }: Props) => {
       r={r}
       s={s}
       className={`hexagon ${hasClickedPiece ? "highlight" : ""}`}
-      handleClick={() => handleClick({ x: row, y: col })}
+      handleClick={() => handleClick({ row, col })}
     />
   );
 };

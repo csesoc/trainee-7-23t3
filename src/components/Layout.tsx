@@ -26,8 +26,8 @@ const LAYOUT_FLAT = new Orientation(
   0.0,
 );
 
-const defaultSize = { x: 10, y: 10 };
-const defaultOrigin = { x: 0, y: 0 };
+const defaultSize = { row: 10, col: 10 };
+const defaultOrigin = { row: 0, col: 0 };
 const defaultSpacing = 1.0;
 
 const Context = React.createContext<LayoutContextProps>({
@@ -48,14 +48,14 @@ export function useLayoutContext() {
 function calculateCoordinates(
   circumradius: number,
   angle: number = 0,
-  center: Point = { x: 0, y: 0 },
+  center: Point = { row: 0, col: 0 },
 ) {
   const corners: Point[] = [];
 
   for (let i = 0; i < 6; i++) {
     const x = circumradius * Math.cos((2 * Math.PI * i) / 6 + angle);
     const y = circumradius * Math.sin((2 * Math.PI * i) / 6 + angle);
-    const point = { x: center.x + x, y: center.y + y };
+    const point = { row: center.row + x, col: center.col + y };
     corners.push(point);
   }
 
@@ -77,8 +77,10 @@ function Layout({
   children,
 }: Props) {
   const orientation = LAYOUT_FLAT;
-  const cornerCoords = calculateCoordinates(size.x);
-  const points = cornerCoords.map((point) => `${point.x},${point.y}`).join(" ");
+  const cornerCoords = calculateCoordinates(size.row);
+  const points = cornerCoords
+    .map((point) => `${point.row},${point.col}`)
+    .join(" ");
   const childLayout = {
     orientation,
     size,

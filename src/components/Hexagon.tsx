@@ -27,10 +27,12 @@ function Hexagon({ q, r, s, className, style, handleClick }: Props) {
     };
   }, [q, r, s, layout]);
 
+  console.log(hex, pixel);
+
   return (
     <g
       className={className}
-      transform={`translate(${pixel.x}, ${pixel.y})`}
+      transform={`translate(${pixel.row}, ${pixel.col})`}
       style={style}
       onClick={handleClick}
     >

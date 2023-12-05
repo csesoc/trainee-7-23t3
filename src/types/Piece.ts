@@ -12,8 +12,8 @@ export enum PIECE_COLOR {
 }
 
 export interface Point {
-  x: number;
-  y: number;
+  row: number;
+  col: number;
 }
 
 // Piece here only refer to pieces currently on the board

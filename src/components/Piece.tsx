@@ -8,18 +8,19 @@ import { Point } from "@datatypes/Piece";
 interface Props {
   row: number;
   col: number;
-  handleClick: ({ x, y }: Point) => void;
+  handleClick: ({ row, col }: Point) => void;
 }
 
 const Piece = ({ row, col, handleClick }: Props) => {
   const [q, r, s] = offsetToCube(row, col);
+  // console.log(q, r, s);
   return (
     <Hexagon
       q={q}
       r={r}
       s={s}
       className="piece"
-      handleClick={() => handleClick({ x: row, y: col })}
+      handleClick={() => handleClick({ row, col })}
     />
   );
 };
