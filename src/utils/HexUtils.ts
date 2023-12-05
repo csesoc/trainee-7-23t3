@@ -53,8 +53,8 @@ export const offsetToCube = (
   row: number,
   col: number,
 ): [number, number, number] => {
-  const q = row;
-  const r = col - (row - (row % 2)) / 2;
+  const q = col;
+  const r = row - (col - (col & 1)) / 2;
   return [q, r, -q - r];
 };
 

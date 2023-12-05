@@ -27,8 +27,6 @@ function Hexagon({ q, r, s, className, style, handleClick }: Props) {
     };
   }, [q, r, s, layout]);
 
-  console.log(hex, pixel);
-
   return (
     <g
       className={className}

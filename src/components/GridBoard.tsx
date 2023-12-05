@@ -6,18 +6,18 @@ import { Point } from "@datatypes/Piece";
 
 const gridHexCoordinates: Point[] = [];
 
-for (let row = 0; row < 16; row++) {
-  for (let col = 0; col < 6; col++) {
+for (let row = 0; row < 6; row++) {
+  for (let col = 0; col < 16; col++) {
     gridHexCoordinates.push({ row, col });
   }
 }
 const samplePieceCoordinates: Point[] = [
-  { row: 0, col: 1 },
-  { row: 8, col: 5 },
-  { row: 4, col: 3 },
-  { row: 14, col: 3 },
-  { row: 5, col: 3 },
-  { row: 8, col: 4 },
+  { row: 1, col: 0 },
+  { row: 5, col: 8 },
+  { row: 3, col: 4 },
+  { row: 3, col: 14 },
+  { row: 3, col: 5 },
+  { row: 4, col: 8 },
 ];
 
 const GridBoard = () => {
@@ -34,20 +34,17 @@ const GridBoard = () => {
   const handldGridHexClick = ({ row, col }: Point) => {
     if (clickedPiece === null) return;
     const newPieceCoordinates = [...pieceCoordinates];
-    newPieceCoordinates.splice(
-      newPieceCoordinates.indexOf({
-        row: clickedPiece.row,
-        col: clickedPiece.col,
-      }),
-      1,
+    const clickedPieceIndex = newPieceCoordinates.findIndex(
+      (piece) =>
+        piece.row === clickedPiece.row && piece.col === clickedPiece.col,
     );
+    if (clickedPieceIndex !== -1) {
+      newPieceCoordinates.splice(clickedPieceIndex, 1);
+    }
     console.log(newPieceCoordinates);
     newPieceCoordinates.push({ row, col });
     console.log(newPieceCoordinates);
 
-    // console.log([x, y]);
-    // console.log(newPieceCoordinates);
-    // console.log(clickedPiece);
     setPieceCoordinates(newPieceCoordinates);
     setClickedPiece(null);
   };
