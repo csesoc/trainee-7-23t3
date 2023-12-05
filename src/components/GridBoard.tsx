@@ -52,11 +52,15 @@ const GridBoard = () => {
   return (
     <svg
       className="grid"
-      width={2300}
-      height={"80%"}
       viewBox={"-30 -30 300 300"}
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid"
+      style={{
+        position: "absolute",
+        height: "100%",
+        width: "100%",
+      }}
     >
       <Layout
         size={{ row: 10, col: 10 }}
@@ -68,11 +72,7 @@ const GridBoard = () => {
             row={coordinate.row}
             col={coordinate.col}
             handleClick={handldGridHexClick}
-            hasClickedPiece={
-              clickedPiece !== null &&
-              coordinate.row === clickedPiece.row &&
-              coordinate.col === clickedPiece.col
-            }
+            clickedPiece={clickedPiece}
           />
         ))}
       </Layout>

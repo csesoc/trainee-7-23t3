@@ -15,7 +15,6 @@ interface Props {
 }
 
 function Hexagon({ q, r, s, className, style, handleClick }: Props) {
-  // destructure props into their values
   const { layout, points } = useLayoutContext();
 
   const { hex, pixel } = React.useMemo(() => {

@@ -1,7 +1,11 @@
-.hexagon:hover {
+/* .hexagon:hover {
   fill: aqua;
-}
+} */
 
 .highlight {
   fill: aqua;
+}
+
+.focused:hover {
+    fill: aqua;
 }
