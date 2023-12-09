@@ -1,13 +1,11 @@
-name: Deploy
+name: Deploy App
 
 on:
   push:
     branches: ["main"]
-  pull_request:
-    branches: ["main"]
 jobs:
   deploy:
-    name: Deploy App
+    name: deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
