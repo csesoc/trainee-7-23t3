@@ -6,7 +6,7 @@ import { Point } from "@datatypes/Piece";
 
 const gridHexCoordinates: Point[] = [];
 
-for (let row = 0; row < 6; row++) {
+for (let row = 0; row < 13; row++) {
   for (let col = 0; col < 16; col++) {
     gridHexCoordinates.push({ row, col });
   }
