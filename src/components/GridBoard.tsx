@@ -31,7 +31,7 @@ const GridBoard = () => {
     setClickedPiece({ row, col });
   };
 
-  const handldGridHexClick = ({ row, col }: Point) => {
+  const handleGridHexClick = ({ row, col }: Point) => {
     if (clickedPiece === null) return;
     const newPieceCoordinates = [...pieceCoordinates];
     const clickedPieceIndex = newPieceCoordinates.findIndex(
@@ -71,7 +71,7 @@ const GridBoard = () => {
           <GridHex
             row={coordinate.row}
             col={coordinate.col}
-            handleClick={handldGridHexClick}
+            handleClick={handleGridHexClick}
             clickedPiece={clickedPiece}
           />
         ))}
