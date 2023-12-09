@@ -41,9 +41,7 @@ const GridBoard = () => {
     if (clickedPieceIndex !== -1) {
       newPieceCoordinates.splice(clickedPieceIndex, 1);
     }
-    console.log(newPieceCoordinates);
     newPieceCoordinates.push({ row, col });
-    console.log(newPieceCoordinates);
 
     setPieceCoordinates(newPieceCoordinates);
     setClickedPiece(null);
