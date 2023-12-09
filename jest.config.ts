@@ -1,10 +1,10 @@
-import type { JestConfigWithTsJest } from 'ts-jest'
+import type { JestConfigWithTsJest } from "ts-jest";
 
 const jestConfig: JestConfigWithTsJest = {
-  preset: 'ts-jest',
+  preset: "ts-jest",
   moduleNameMapper: {
-    '^@datatypes/(.*)$': '<rootDir>/src/types/$1',
+    "^@datatypes/(.*)$": "<rootDir>/src/types/$1",
   },
-}
+};
 
-export default jestConfig
+export default jestConfig;
