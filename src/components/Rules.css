@@ -1,0 +1,12 @@
+.rules-container {
+    width: 100vw;
+    height: 100vh;
+    margin: 3%;
+}
+
+.description-container {
+    padding: 10px;
+    font-weight: bold;
+    background-color: orange;
+    width: 90%;
+}
