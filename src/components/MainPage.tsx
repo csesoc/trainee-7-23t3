@@ -11,11 +11,11 @@ function MainPage() {
         <img src="src/images/logo2.png"></img>
       </div>
       <div className="btn-container">
-        <button className="btn" id="btn-play">
-          <Link to="/play" id="btn-play-link">
+        <Link to="/play" id="btn-play-link">
+          <button className="btn" id="btn-play">
             PLAY
-          </Link>
-        </button>
+          </button>
+        </Link>
         <Link to="/rules" id="btn-rules-link">
           <button className="btn" id="btn-rules">
             RULES

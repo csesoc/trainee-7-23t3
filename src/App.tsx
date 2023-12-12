@@ -20,12 +20,11 @@ function App() {
     // >
     //   <GridBoard />
     // </div>
-    <>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/rules" element={<Rules />} />
-      </Routes>
-    </>
+
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/rules" element={<Rules />} />
+    </Routes>
   );
 }
 
