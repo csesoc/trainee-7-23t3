@@ -9,12 +9,18 @@ function PlayPage() {
         width: "100vw",
         height: "100vh",
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        // alignItems: "center",
       }}
     >
+      <div
+        style={{ height: "100vh", backgroundColor: "black", width: "20vw" }}
+      />
       <GridBoard />
+      <div
+        style={{ height: "100vh", backgroundColor: "black", width: "20vw" }}
+      />
     </div>
   );
 }
