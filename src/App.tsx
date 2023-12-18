@@ -7,23 +7,10 @@ import Rules from "./components/Rules";
 
 function App() {
   return (
-    // <div
-    //   style={{
-    //     position: "relative",
-    //     width: "100vw",
-    //     height: "100vh",
-    //     display: "flex",
-    //     flexDirection: "column",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //   }}
-    // >
-    //   <GridBoard />
-    // </div>
-
     <Routes>
       <Route path="/" element={<MainPage />} />
       <Route path="/rules" element={<Rules />} />
+      <Route path="/play" element={<GridBoard />} />
     </Routes>
   );
 }
