@@ -48,46 +48,58 @@ const GridBoard = () => {
   };
 
   return (
-    <svg
-      className="grid"
-      viewBox={"-30 -30 300 300"}
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMidYMid"
+    <div
       style={{
-        position: "absolute",
-        height: "100%",
-        width: "100%",
+        position: "relative",
+        width: "100vw",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <Layout
-        size={{ row: 10, col: 10 }}
-        spacing={1.1}
-        origin={{ row: 0, col: 0 }}
+      <svg
+        className="grid"
+        viewBox={"-30 -30 300 300"}
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid"
+        style={{
+          position: "absolute",
+          height: "100%",
+          width: "100%",
+        }}
       >
-        {gridHexCoordinates.map((coordinate) => (
-          <GridHex
-            row={coordinate.row}
-            col={coordinate.col}
-            handleClick={handleGridHexClick}
-            clickedPiece={clickedPiece}
-          />
-        ))}
-      </Layout>
-      <Layout
-        size={{ row: 8, col: 8 }}
-        spacing={1.375}
-        origin={{ row: 0, col: 0 }}
-      >
-        {pieceCoordinates.map((coordinate) => (
-          <Piece
-            row={coordinate.row}
-            col={coordinate.col}
-            handleClick={handlePieceClick}
-          />
-        ))}
-      </Layout>
-    </svg>
+        <Layout
+          size={{ row: 10, col: 10 }}
+          spacing={1.1}
+          origin={{ row: 0, col: 0 }}
+        >
+          {gridHexCoordinates.map((coordinate) => (
+            <GridHex
+              row={coordinate.row}
+              col={coordinate.col}
+              handleClick={handleGridHexClick}
+              clickedPiece={clickedPiece}
+            />
+          ))}
+        </Layout>
+        <Layout
+          size={{ row: 8, col: 8 }}
+          spacing={1.375}
+          origin={{ row: 0, col: 0 }}
+        >
+          {pieceCoordinates.map((coordinate) => (
+            <Piece
+              row={coordinate.row}
+              col={coordinate.col}
+              handleClick={handlePieceClick}
+            />
+          ))}
+        </Layout>
+      </svg>
+    </div>
   );
 };
 
