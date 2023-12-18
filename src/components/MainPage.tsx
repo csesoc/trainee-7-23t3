@@ -6,9 +6,9 @@ function MainPage() {
   return (
     <div className="main-container">
       <div className="logo-container">
-        <img src="src/images/bee.png"></img>
-        <img src="src/images/hive_logo.png"></img>
-        <img src="src/images/logo2.png"></img>
+        <img src="/bee.png"></img>
+        <img src="/hive_logo.png"></img>
+        <img src="/logo2.png"></img>
       </div>
       <div className="btn-container">
         <Link to="/play" id="btn-play-link">

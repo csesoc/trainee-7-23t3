@@ -7,7 +7,7 @@ function Rules() {
   return (
     <div className="rules-container">
       <Link to="/" id="btn-rules-link">
-        <img src="src/images/home.png" alt="home" style={{ width: "50px" }} />
+        <img src="/home.png" alt="home" style={{ width: "50px" }} />
       </Link>
       <h1>Hive Game Rules</h1>
       <img
@@ -17,7 +17,7 @@ function Rules() {
           right: "10vw",
           border: "10px solid black",
         }}
-        src="src/images/circled.png"
+        src="/circled.png"
       ></img>
       <div className="description-container">
         <h2>Components</h2>
