@@ -20,7 +20,11 @@ const samplePieceCoordinates: Point[] = [
   { row: 4, col: 8 },
 ];
 
-const GridBoard = () => {
+interface Props {
+  isPlacingPiece: boolean;
+}
+
+function GridBoard({ isPlacingPiece }: Props) {
   const [pieceCoordinates, setPieceCoordinates] = useState(
     samplePieceCoordinates,
   );
@@ -32,18 +36,15 @@ const GridBoard = () => {
   };
 
   const handleGridHexClick = ({ row, col }: Point) => {
-    if (clickedPiece === null) return;
-    const newPieceCoordinates = [...pieceCoordinates];
-    const clickedPieceIndex = newPieceCoordinates.findIndex(
-      (piece) =>
-        piece.row === clickedPiece.row && piece.col === clickedPiece.col,
-    );
-    if (clickedPieceIndex !== -1) {
-      newPieceCoordinates.splice(clickedPieceIndex, 1);
-    }
-    newPieceCoordinates.push({ row, col });
+    if (!isPlacingPiece === null) return;
+    const newPieceCoordinates = clickedPiece
+      ? pieceCoordinates.filter(
+          (piece) =>
+            piece.row !== clickedPiece.row || piece.col !== clickedPiece.col,
+        )
+      : [...pieceCoordinates];
 
-    setPieceCoordinates(newPieceCoordinates);
+    setPieceCoordinates([...newPieceCoordinates, { row, col }]);
     setClickedPiece(null);
   };
 
@@ -89,6 +90,6 @@ const GridBoard = () => {
       </Layout>
     </svg>
   );
-};
+}
 
 export default GridBoard;

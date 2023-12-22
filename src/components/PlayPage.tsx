@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import GridBoard from "./GridBoard";
+import Supply from "./Supply";
 
 function PlayPage() {
+  const [isPlacingPiece, setIsPlacingPiece] = useState(false);
+
   return (
     <div
       style={{
@@ -14,13 +17,9 @@ function PlayPage() {
         // alignItems: "center",
       }}
     >
-      <div
-        style={{ height: "100vh", backgroundColor: "black", width: "20vw" }}
-      />
-      <GridBoard />
-      <div
-        style={{ height: "100vh", backgroundColor: "black", width: "20vw" }}
-      />
+      <Supply handleClick={() => setIsPlacingPiece(!isPlacingPiece)} />
+      <GridBoard isPlacingPiece={isPlacingPiece} />
+      <Supply handleClick={() => setIsPlacingPiece(!isPlacingPiece)} />
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { Point } from "@datatypes/Piece";
 interface Props {
   row: number;
   col: number;
-  handleClick: ({ row, col }: Point) => void;
+  handleClick?: ({ row, col }: Point) => void;
 }
 
 const Piece = ({ row, col, handleClick }: Props) => {
@@ -20,7 +20,7 @@ const Piece = ({ row, col, handleClick }: Props) => {
       r={r}
       s={s}
       className="piece"
-      handleClick={() => handleClick({ row, col })}
+      handleClick={handleClick ? () => handleClick({ row, col }) : undefined}
     />
   );
 };
